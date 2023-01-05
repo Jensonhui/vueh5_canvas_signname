@@ -1,4 +1,4 @@
-// 图片旋转处理 -> base64
+// 图片旋转处理 => output(base64)
 export const rotateBase64Img = (src, edg, callback) => {
   try {
     const canvas = document.createElement('canvas')
@@ -69,7 +69,7 @@ export const rotateBase64Img = (src, edg, callback) => {
       ctx.putImageData(imgData, 0, 0)
 
       if (typeof callback === 'function') {
-        callback(canvas.toDataURL('image/png', 0.7))
+        callback(canvas.toDataURL('image/png'))
       }
     }
   } catch (e) {

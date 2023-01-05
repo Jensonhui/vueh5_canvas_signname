@@ -1,13 +1,19 @@
-# vueh5_canvas_signname
+# vue-h5-signature
 
-移动端下业务需要全屏手写签名，需求：兼容横竖屏，无论横竖屏下，签字图都需要是横向显示
-[SignaturePad插件](https://github.com/szimek/signature_pad)
-
-## 项目运行
+## Project setup
 ```
-npm install
-
-npm run serve
+yarn install
 ```
 
-个人博客: [Jensonhui's Blog](https://www.jensonhui.top)
+### Compiles and hot-reloads for development
+```
+yarn serve
+```
+
+### Compiles and minifies for production
+```
+yarn build
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -1,0 +1,86 @@
+.recruit-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .canvas-box,
+  .btn-box {
+    position: absolute;
+    top: 50%;
+    z-index: 100;
+  }
+
+  .canvas-box {
+    left: 22%;
+    width: 70vw;
+    height: 80vh;
+    overflow: hidden;
+    transform: translateY(-50%);
+    background-color: #fff;
+    border: 1px dashed #D4D4D4;
+
+    #canvas-map {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+
+  .btn-box {
+    left: -22%;
+    z-index: 1000;
+    text-align: center;
+    transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+
+    .del-btn,
+    .sure-btn {
+      display: inline-block;
+      width: 100px;
+      height: 24px;
+      margin: 0 10px;
+      line-height: 24px;
+      border-radius: 6px;
+      background-color: #fff;
+    }
+
+    .del-btn {
+      color: #FF5E00;
+    }
+
+    .sure-btn {
+      color: #fff;
+      background: linear-gradient(100deg, #FF4E01 0%, #FFBC01 100%);
+    }
+  }
+}
+
+@media screen and (orientation: portrait) {
+  /*竖屏 css*/
+}
+
+@media screen and (orientation: landscape) {
+
+  /*横屏 css*/
+  .recruit-canvas {
+    .canvas-box {
+      top: 20px;
+      left: 10%;
+      width: 80vw;
+      height: 70vh;
+      transform: translateY(0);
+    }
+
+    .btn-box {
+      width: 60%;
+      top: 86%;
+      left: 20%;
+      transform: rotate(0);
+    }
+  }
+}
