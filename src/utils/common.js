@@ -69,7 +69,7 @@ export const rotateBase64Img = (src, edg, callback) => {
       ctx.putImageData(imgData, 0, 0)
 
       if (typeof callback === 'function') {
-        callback(canvas.toDataURL('image/png'))
+        callback(canvas.toDataURL('image/png', 0.7))
       }
     }
   } catch (e) {

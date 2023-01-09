@@ -4,19 +4,21 @@
       <canvas ref="canvasMapRef" id="canvas-map" width="100" height="100" />
     </div>
 
-    <div class="btn-box flex-row">
-      <span class="del-btn" @click="clearHandle">清除</span>
-      <span class="sure-btn" @click="confirmHandle">确认</span>
-    </div>
+    <slot name="default" :signatrue="canvasNode">
+      <div class="btn-box flex-row">
+        <span class="del-btn" @click="clearHandle">清除</span>
+        <span class="sure-btn" @click="confirmHandle">确认</span>
+      </div>
+    </slot>
   </div>
 </template>
 
-<script>
+<script lang="js">
 import SignaturePad from 'signature_pad'
-import { rotateBase64Img } from './utils/common'
+import { rotateBase64Img } from '@/utils/common'
 
 export default {
-  name: 'MobileSignature',
+  name: 'signatureH5',
   props: {
     options: Object
   },
@@ -57,9 +59,10 @@ export default {
     },
 
     clearHandle () {
-      if (this.canvasNode) {
-        this.canvasNode.clear()
-        this.previewImage = ''
+      const hasNode = this.canvasNode
+      if (hasNode) {
+        hasNode.clear()
+        this.$emit('cancelEvent', hasNode)
       }
     },
 
@@ -73,6 +76,7 @@ export default {
       // 是否签字
       if (canvasNode.isEmpty()) {
         console.warn('您还没有签名');
+        this.$emit('confirmEvent', canvasNode);
         return false
       }
 
@@ -82,10 +86,10 @@ export default {
       const _signImg = canvasNode.toDataURL('image/png', 0.6) || null
       if (_boxWidth < _boxHeight) {
         rotateBase64Img(_signImg, -90, (imgUrlRes) => {
-          this.$emit('confirmEvent', imgUrlRes)
+          this.$emit('confirmEvent', imgUrlRes);
         })
       } else {
-        this.$emit('confirmEvent', _signImg)
+        this.$emit('confirmEvent', _signImg);
       }
     }
   },
@@ -94,3 +98,7 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+@import './signature-h5.less';
+</style>
